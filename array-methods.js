@@ -1,6 +1,6 @@
 console.log("Kassenproblem");
 function calculateChange(price, amountpaid) {
-    let changeback = amountpaid - price;
+    let changeback = (amountpaid - price) * 100;
     var change = {};
     let types = [
         "500",
@@ -20,16 +20,15 @@ function calculateChange(price, amountpaid) {
         "0.01",
     ];
     let values = [
-        500.0, 200.0, 100.0, 50.0, 20.0, 10.0, 5.0, 2.0, 1.0, 0.5, 0.2, 0.1,
-        0.05, 0.02, 0.01,
+        50000, 20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2,
+        1,
     ];
     var amount;
     for (let i = 0; i < values.length; i++) {
         amount = Math.floor(changeback / values[i]);
-        amount;
         if (amount > 0) {
             change[types[i]] = amount;
-            changeback = changeback % values[i];
+            changeback = changeback - values[i] * amount;
         }
     }
     return change;
