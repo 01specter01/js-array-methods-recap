@@ -35,3 +35,20 @@ function calculateChange(price, amountpaid) {
 }
 console.log(calculateChange(3.75, 50));
 console.log(calculateChange(4.5, 20)); // returns: 1 x 10 €, 1 x 5 €, 1 x 0.5 €
+
+console.log("WordRank-Bewertungssystem");
+function wordRank(sentance) {
+    const noSpecialCharacters = sentance.replace(/[^a-zA-Z0-9]/g, " ");
+    let splittedSentance = sentance.split("");
+    let index = splittedSentance.reduce((acc, curr, i) => {
+        if (curr.length > splittedSentance[acc].length) {
+            return i;
+        }
+
+        return acc;
+    }, 0);
+
+    return splittedSentance[index];
+}
+
+console.log(wordRank("The quick brown fox ran away in the woodlands."));
